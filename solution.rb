@@ -1,8 +1,10 @@
 require 'sinatra'
+require 'erb'
+
 get '/' do
 	unless params[:nombre]
-		 "Hola desconocido!"
+		ERB.new("<h1>Hola desconocido!</h1>").result(binding)
 	else
-	"Hola #{params[:nombre]}"
-	end	 
+	    ERB.new("<h1>Hola <%= params[:nombre] %></h1>").result(binding)
+	end	      
 end
